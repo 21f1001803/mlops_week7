@@ -1,0 +1,5 @@
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = gs://week7_mlops
+    credentialpath = ../pelagic-quanta-474118-c1-9cd6b12a08de.json
