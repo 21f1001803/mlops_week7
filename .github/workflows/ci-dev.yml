@@ -29,11 +29,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Configure DVC Remote
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_KEY_JSON }}
         run: |
-          echo "${GOOGLE_APPLICATION_CREDENTIALS}" > gcp-key.json
+          echo '${{ secrets.GCP_KEY_JSON }}' > gcp-key.json
+          cat gcp-key.json | jq .type  # optional validation
           dvc remote modify myremote credentialpath gcp-key.json
+
 
       - name: Pull data from DVC
         run: dvc pull -r myremote
